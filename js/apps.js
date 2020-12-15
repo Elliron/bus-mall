@@ -2,6 +2,7 @@
 
 //global variables
 var allProducts = [];
+var renderQueue = [];
 var maxClickAllowed = 25;
 var actualClicks = 0;
 // var randomNumber[] = 0
@@ -20,6 +21,7 @@ function BusMallProducts(name, src) {
   this.views = 0;
   this.votes = 0;
   allProducts.push(this);
+  console.log(this.votes);
 }
 //instantiations
 new BusMallProducts('bag', 'jpg');
@@ -49,9 +51,17 @@ function getRandomIndex(max) {
 }
 
 function renderBusMallProducts() {
-  var productOneIndex = getRandomIndex(allProducts.length);
-  var productTwoIndex = getRandomIndex(allProducts.length);
-  var productThreeIndex = getRandomIndex(allProducts.length);
+  while (renderQueue.length < 3) {
+    var tempindex = getRandomIndex(allProducts.length);
+    while (renderQueue.includes(tempindex)) {
+      tempindex = getRandomIndex(allProducts.length);
+    }
+    renderQueue.push(tempindex);
+  }
+  console.log(renderQueue);
+  var productOneIndex = renderQueue.pop();
+  var productTwoIndex = renderQueue.pop();
+  var productThreeIndex = renderQueue.pop();
   //validation
 
   //assign product info
@@ -73,7 +83,7 @@ function renderBusMallProducts() {
 //event handler
 function handleClick(event) {
   actualClicks++;
-  var clickedProduct = event.target.name;
+  var clickedProduct = event.target.title;
   for (var i = 0; i < allProducts.length; i++) {
     if (clickedProduct === allProducts[i].name) {
       allProducts[i].votes++;
