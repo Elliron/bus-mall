@@ -89,7 +89,7 @@ function handleClick(event) {
     //which image and numberClicks increment
     for (var j = 0; j < allProducts.length; j++) {
       var liElement = document.createElement('li');
-      liElement.textContent = `${allProducts[j].name} was viewed ${allProducts[j].votes} times`;
+      liElement.textContent = `${allProducts[j].name} was viewed ${allProducts[j].views} and clicked ${allProducts[j].votes} times`;
       resultList.appendChild(liElement);
     }
   }
