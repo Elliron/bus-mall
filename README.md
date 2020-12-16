@@ -11,7 +11,7 @@ Reset CSS: https://meyerweb.com/eric/tools/css/reset/
 Random: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math/random
 
 Placeholder image: https://picsum.photos/
-
+Charts: https://www.chartjs.org/docs/latest/
 Position lower right: https://stackoverflow.com/questions/3956043/css-how-to-position-element-in-lower-right
 
 Collabs

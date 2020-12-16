@@ -97,11 +97,13 @@ function handleClick(event) {
   if (actualClicks === maxClickAllowed) {
     myContainer.removeEventListener('click', handleClick);
     //which image and numberClicks increment
-    for (var j = 0; j < allProducts.length; j++) {
-      var liElement = document.createElement('li');
-      liElement.textContent = `${allProducts[j].name} was viewed ${allProducts[j].views} and clicked ${allProducts[j].votes} times`;
-      resultList.appendChild(liElement);
-    }
+
+    renderChart();
+    // for (var j = 0; j < allProducts.length; j++) {
+    //   var liElement = document.createElement('li');
+    //   liElement.textContent = `${allProducts[j].name} was viewed ${allProducts[j].views} and clicked ${allProducts[j].votes} times`;
+    //   resultList.appendChild(liElement);
+    // }
   }
 }
 
@@ -112,5 +114,53 @@ function handleClick(event) {
 
 //executable code
 renderBusMallProducts();
+
+function renderChart() {
+  var namesArray = [];
+  var votesArray = [];
+  var viewsArray = [];
+
+  for (var i = 0; i < allProducts.length; i++) {
+    namesArray.push(allProducts[i].name);
+    votesArray.push(allProducts[i].votes);
+    viewsArray.push(allProducts[i].views);
+  }
+
+
+  var ctx = document.getElementById('myChart').getContext('2d');
+  var dataObject = {
+    type: 'bar',
+    data: {
+      labels: namesArray,
+      datasets: [{
+        label: 'Number of Votes',
+        data: votesArray,
+        backgroundColor: 'rgba(255, 99, 132, 0.2)',
+        borderColor: 'rgba(255, 99, 132, 1)',
+        borderWidth: 5
+      },
+      {
+        label: 'Number of Views',
+        data: viewsArray,
+        backgroundColor: 'rgba(153, 102, 255, 0.2)',
+        borderColor: 'rgba(153, 102, 255, 1)',
+        borderWidth: 2
+      }]
+    },
+    options: {
+      responsive: false,
+      scales: {
+        yAxes: [{
+          ticks: {
+            beginAtZero: true
+          }
+        }]
+      }
+    }
+  };
+
+  var myChart = new Chart(ctx, dataObject); //eslint-disable-line
+
+}
 //event listener attached to container
 myContainer.addEventListener('click', handleClick);
