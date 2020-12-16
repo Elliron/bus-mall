@@ -12,7 +12,6 @@ Random: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global
 
 Placeholder image: https://picsum.photos/
 Charts: https://www.chartjs.org/docs/latest/
-Position lower right: https://stackoverflow.com/questions/3956043/css-how-to-position-element-in-lower-right
 
 Collabs
 Anthony Hayward
@@ -20,3 +19,5 @@ Carly Dekock
 Jason Quaglia
 Lauren Sierra
 Chance Harmon
+Ryan Galloway
+Cait Rowland
