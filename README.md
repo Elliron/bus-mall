@@ -20,3 +20,4 @@ Carly Dekock
 Jason Quaglia
 Lauren Sierra
 Chance Harmon
+Ryan Galloway
