@@ -5,15 +5,13 @@ var allProducts = [];
 var renderQueue = [];
 var maxClickAllowed = 25;
 var actualClicks = 0;
-// var randomNumber[] = 0
-// var randomNumberTwo[] = 0
 
 //DOM ids
 var myContainer = document.getElementById('container');
 var imageOneElement = document.getElementById('image-one');
 var imageTwoElement = document.getElementById('image-two');
 var imageThreeElement = document.getElementById('image-three');
-// var resultList = document.getElementById('results');
+
 //constructor with productName, imagePath, imageCount
 function BusMallProducts(name, src) {
   this.name = name;
@@ -22,27 +20,38 @@ function BusMallProducts(name, src) {
   this.votes = 0;
   allProducts.push(this);
 }
-//instantiations
-new BusMallProducts('bag', 'jpg');
-new BusMallProducts('banana', 'jpg');
-new BusMallProducts('bathroom', 'jpg');
-new BusMallProducts('boots', 'jpg');
-new BusMallProducts('breakfast', 'jpg');
-new BusMallProducts('bubblegum', 'jpg');
-new BusMallProducts('chair', 'jpg');
-new BusMallProducts('cthulhu', 'jpg');
-new BusMallProducts('dog-duck', 'jpg');
-new BusMallProducts('dragon', 'jpg');
-new BusMallProducts('pen', 'jpg');
-new BusMallProducts('pet-sweep', 'jpg');
-new BusMallProducts('scissors', 'jpg');
-new BusMallProducts('shark', 'jpg');
-new BusMallProducts('sweep', 'png');
-new BusMallProducts('tauntaun', 'jpg');
-new BusMallProducts('unicorn', 'jpg');
-new BusMallProducts('usb', 'gif');
-new BusMallProducts('water-can', 'jpg');
-new BusMallProducts('wine-glass', 'jpg');
+BusMallProducts.prototype.logger = function () {
+  console.log(this);
+};
+
+var retrieveProducts = localStorage.getItem('products');
+if (retrieveProducts) {
+  allProducts = JSON.parse(retrieveProducts);
+  console.log(allProducts);
+} else {
+  //instantiations
+  new BusMallProducts('bag', 'jpg');
+  new BusMallProducts('banana', 'jpg');
+  new BusMallProducts('bathroom', 'jpg');
+  new BusMallProducts('boots', 'jpg');
+  new BusMallProducts('breakfast', 'jpg');
+  new BusMallProducts('bubblegum', 'jpg');
+  new BusMallProducts('chair', 'jpg');
+  new BusMallProducts('cthulhu', 'jpg');
+  new BusMallProducts('dog-duck', 'jpg');
+  new BusMallProducts('dragon', 'jpg');
+  new BusMallProducts('pen', 'jpg');
+  new BusMallProducts('pet-sweep', 'jpg');
+  new BusMallProducts('scissors', 'jpg');
+  new BusMallProducts('shark', 'jpg');
+  new BusMallProducts('sweep', 'png');
+  new BusMallProducts('tauntaun', 'jpg');
+  new BusMallProducts('unicorn', 'jpg');
+  new BusMallProducts('usb', 'gif');
+  new BusMallProducts('water-can', 'jpg');
+  new BusMallProducts('wine-glass', 'jpg');
+}
+
 
 //which imageViewed, randomGenerator, useArray
 function getRandomIndex(max) {
@@ -60,7 +69,6 @@ function renderBusMallProducts() {
   var productOneIndex = renderQueue.shift();
   var productTwoIndex = renderQueue.shift();
   var productThreeIndex = renderQueue.shift();
-  //validation
 
   //assign product info
   imageOneElement.src = allProducts[productOneIndex].src;
@@ -97,11 +105,9 @@ function handleClick(event) {
     //which image and numberClicks increment
 
     renderChart();
-    // for (var j = 0; j < allProducts.length; j++) {
-    //   var liElement = document.createElement('li');
-    //   liElement.textContent = `${allProducts[j].name} was viewed ${allProducts[j].views} and clicked ${allProducts[j].votes} times`;
-    //   resultList.appendChild(liElement);
-    // }
+    // save to local storage to persist completed datasets
+    var stringifiedProducts = JSON.stringify(allProducts);
+    localStorage.setItem('products', stringifiedProducts);
   }
 }
 
@@ -123,7 +129,6 @@ function renderChart() {
     votesArray.push(allProducts[i].votes);
     viewsArray.push(allProducts[i].views);
   }
-
 
   var ctx = document.getElementById('myChart').getContext('2d');
   var dataObject = {
