@@ -13,7 +13,7 @@ var myContainer = document.getElementById('container');
 var imageOneElement = document.getElementById('image-one');
 var imageTwoElement = document.getElementById('image-two');
 var imageThreeElement = document.getElementById('image-three');
-var resultList = document.getElementById('results');
+// var resultList = document.getElementById('results');
 //constructor with productName, imagePath, imageCount
 function BusMallProducts(name, src) {
   this.name = name;
@@ -21,7 +21,6 @@ function BusMallProducts(name, src) {
   this.views = 0;
   this.votes = 0;
   allProducts.push(this);
-  console.log(this.votes);
 }
 //instantiations
 new BusMallProducts('bag', 'jpg');
@@ -51,17 +50,16 @@ function getRandomIndex(max) {
 }
 
 function renderBusMallProducts() {
-  while (renderQueue.length < 3) {
+  while (renderQueue.length < 6) {
     var tempindex = getRandomIndex(allProducts.length);
     while (renderQueue.includes(tempindex)) {
       tempindex = getRandomIndex(allProducts.length);
     }
     renderQueue.push(tempindex);
   }
-  console.log(renderQueue);
-  var productOneIndex = renderQueue.pop();
-  var productTwoIndex = renderQueue.pop();
-  var productThreeIndex = renderQueue.pop();
+  var productOneIndex = renderQueue.shift();
+  var productTwoIndex = renderQueue.shift();
+  var productThreeIndex = renderQueue.shift();
   //validation
 
   //assign product info
