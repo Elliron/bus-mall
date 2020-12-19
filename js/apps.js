@@ -86,6 +86,7 @@ function renderBusMallProducts() {
   imageThreeElement.title = allProducts[productThreeIndex].name;
   allProducts[productThreeIndex].views++;
 }
+
 //event handler
 function handleClick(event) {
   actualClicks++;
@@ -111,11 +112,6 @@ function handleClick(event) {
   }
 }
 
-
-
-
-
-
 //executable code
 renderBusMallProducts();
 
@@ -130,6 +126,7 @@ function renderChart() {
     viewsArray.push(allProducts[i].views);
   }
 
+  //total results chart
   var ctx = document.getElementById('myChart').getContext('2d');
   var dataObject = {
     type: 'bar',

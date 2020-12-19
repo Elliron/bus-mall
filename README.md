@@ -9,7 +9,6 @@ About: Bus Mall shopping, for all your not good enough for late night infomercia
 Links:
 Reset CSS: https://meyerweb.com/eric/tools/css/reset/
 Random: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math/random
-
 Placeholder image: https://picsum.photos/
 Charts: https://www.chartjs.org/docs/latest/
 
@@ -21,3 +20,10 @@ Lauren Sierra
 Chance Harmon
 Ryan Galloway
 Cait Rowland
+
+Update History:
+2020:
+12/14: created busmall project
+12/15: Getting into new habits
+12/16: Will add brief comment for each update 
+12/18: added final touches
